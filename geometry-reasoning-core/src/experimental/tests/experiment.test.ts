@@ -13,9 +13,9 @@ async function runExperiment() {
   assert.equal(solutions2D.type, 'DISCRETE_FINITE');
   assert.equal(solutions2D.solutions.length, 2);
 
-  const selector2D = new DefaultBranchSelector('MINIMAL_DISPLACEMENT');
+  const selector2D = new DefaultBranchSelector<any>('MINIMAL_DISPLACEMENT');
   const choice2D = selector2D.select(solutions2D.solutions);
-  console.log('2D Choice:', choice2D?.id);
+  console.log('2D Choice:', choice2D?.id as any);
   assert.ok(choice2D !== null);
 
   const verification2D = problem2D.verify(choice2D!);
@@ -29,13 +29,13 @@ async function runExperiment() {
   console.log('3D Solutions found:', solutions3D.solutions.length);
   assert.equal(solutions3D.type, 'DISCRETE_FINITE');
 
-  const selector3D = new DefaultBranchSelector('PARITY');
+  const selector3D = new DefaultBranchSelector<any>('PARITY');
   const choice3D = selector3D.select(solutions3D.solutions, { parity: 1 });
-  console.log('3D Choice (Parity 1):', choice3D?.paritySign);
-  assert.equal(choice3D?.paritySign, 1);
+  console.log('3D Choice (Parity 1):', choice3D?.paritySign as any);
+  assert.equal(choice3D?.paritySign as any, 1);
 
   // 3. Test Failure: Insufficient policy
-  const invalidSelector = new DefaultBranchSelector('EXPLICIT_INDEX');
+  const invalidSelector = new DefaultBranchSelector<any>('EXPLICIT_INDEX');
   const invalidChoice = invalidSelector.select(solutions3D.solutions, { index: 99 });
   console.log('Invalid Choice (Index 99):', invalidChoice);
   assert.equal(invalidChoice, null);
