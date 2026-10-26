@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict';
+import assert from 'assert';
 import { DefaultBranchSelector } from '../branchSelector';
 import { ReflectionProblem } from '../domains/2d_reflection';
 import { TetrahedronProblem } from '../domains/3d_tetrahedron';

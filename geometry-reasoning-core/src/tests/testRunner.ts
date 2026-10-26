@@ -7,7 +7,7 @@
  * Computes exact Float64 discrepancies against bounded tolerances.
  */
 
-import {
+import { Point2D, Matrix2x2, reflectPoint, reflectPolygon, computeReflectionMatrix, mulMatrix2x2, mulMatrixVec2D, dist2D, sub2D, norm2D, DEFAULT_TOLERANCES, Point3D, calculateUnsignedArea, frobeniusNorm2x2, det2x2 } from "../core/index";
   Point2D,
   Matrix2x2,
   reflectPoint,
@@ -27,7 +27,7 @@ import {
   isValidPoint2D,
 } from './reflection';
 
-import {
+import { Point2D, Matrix2x2, reflectPoint, reflectPolygon, computeReflectionMatrix, mulMatrix2x2, mulMatrixVec2D, dist2D, sub2D, norm2D, DEFAULT_TOLERANCES, Point3D, calculateUnsignedArea, frobeniusNorm2x2, det2x2 } from "../core/index";
   verifyIsometry,
   verifyAxisImmobility,
   verifyAreaInvariants,
