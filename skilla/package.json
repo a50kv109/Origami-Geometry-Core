@@ -1,0 +1,18 @@
+{
+  "name": "skilla",
+  "version": "0.1.0",
+  "description": "Skilla — Experimental research laboratory for geometric construction primitives and invariant verification",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "tsx scripts/runTests.ts",
+    "test:p2p": "tsx scripts/runPointToPoint.ts",
+    "test:constraint": "tsx scripts/runConstraintTests.ts",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2"
+  }
+}

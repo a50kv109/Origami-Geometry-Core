@@ -1,0 +1,17 @@
+Structural ID;Type;Semantic Title (Зміст);Native ID;Logical Context;Page
+"FIGURE-FRONT_MATTER-1";"FIGURE";"Обкладинка та вироби геометричного орігамі";"Cover-1";"FRONT_MATTER";1
+"FIGURE-CHAPTER-01-1";"FIGURE";"Задачі на згинання паперу (あたまのたいそう)";"Brain-Teasers";"CHAPTER-01";8
+"FIGURE-CHAPTER-01-2";"FIGURE";"Побудова базової сітки правильних трикутників";"Triangle-Grid";"CHAPTER-01";9
+"FIGURE-CHAPTER-02-1";"FIGURE";"Модель правильного тетраедра (No. 1)";"No. 1";"CHAPTER-02";11
+"FIGURE-CHAPTER-02-2";"FIGURE";"Кристалічна структура алмазу";"Diamond-Crystal";"CHAPTER-02";12
+"FIGURE-CHAPTER-02-3";"FIGURE";"Октаедрична кристалічна упаковка";"Octahedral-Packing";"CHAPTER-02";13
+"EQUATION-CHAPTER-02-1";"EQUATION";"Формула кількості елементів упакування \Sigma = \frac{n}{3}(4n^2 - 1)";"Eq-Octa-1";"CHAPTER-02";14
+"EQUATION-CHAPTER-02-2";"EQUATION";"Формула тетраедричного упакування \Sigma = \frac{n(n+1)(2n+1)}{6}";"Eq-Tetra-1";"CHAPTER-02";14
+"FIGURE-CHAPTER-02-4";"FIGURE";"Лійкоподібний тетраедр (No. 6)";"No. 6";"CHAPTER-02";16
+"FIGURE-CHAPTER-02-5";"FIGURE";"Правильний октаедр (No. 3)";"No. 3";"CHAPTER-02";19
+"FIGURE-CHAPTER-02-6";"FIGURE";"Ромбододекаедр (No. 17)";"No. 17";"CHAPTER-02";47
+"FIGURE-CHAPTER-03-1";"FIGURE";"Шестикутна зірка (6つ星 No. 35)";"No. 35";"CHAPTER-03";11
+"FIGURE-CHAPTER-03-2";"FIGURE";"П'ятикутна зірка (5つ星)";"5-Star";"CHAPTER-03";18
+"FIGURE-CHAPTER-04-1";"FIGURE";"Рельєфна складка 'Сітка' (A12 網)";"A12";"CHAPTER-04";70
+"FIGURE-CHAPTER-04-2";"FIGURE";"Закручена складка / Хвиля (C1-C6 ねじり折り)";"Twist-Folds";"CHAPTER-04";96
+"FIGURE-CHAPTER-05-1";"FIGURE";"Орігамі-гвинт (ネジ)";"Screw";"CHAPTER-05";63
