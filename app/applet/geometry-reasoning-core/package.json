@@ -1,0 +1,13 @@
+{
+  "name": "geometry-reasoning-core",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "tsx src/experimental/tests/experiment.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2"
+  }
+}
