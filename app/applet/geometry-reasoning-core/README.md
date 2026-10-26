@@ -20,10 +20,10 @@ npm install
 - **Experimental Tests:** `npm run test:exp`
 
 ## Documentation
-- [Architecture](ARCHITECTURE.md)
-- [Status](STATUS.md)
-- [Testing](TESTING.md)
-- [Known Limitations](KNOWN_LIMITATIONS.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Status](docs/STATUS.md)
+- [Testing](docs/TESTING.md)
+- [Known Limitations](docs/KNOWN_LIMITATIONS.md)
 
 ## License
-MIT License.
+[MIT License](LICENSE).
