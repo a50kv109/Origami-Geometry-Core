@@ -19,6 +19,13 @@ npm install
 - **Core Baseline Tests:** `npm test`
 - **Experimental Tests:** `npm run test:exp`
 
+## Adding a New Geometry Domain
+To extend the reasoning engine to a new domain:
+1.  **Define the Problem:** Create a class implementing the `GeometricProblem<T>` interface.
+2.  **Implement `solve()`:** The solver should return a `SolutionSet<T>` classifying the outcomes.
+3.  **Implement `verify()`:** Create an independent `Verifier<T>` to audit chosen solutions.
+4.  **Selection:** Use the `BranchSelector<T>` with an appropriate policy to pick a solution branch.
+
 ## Documentation
 - [Architecture](docs/ARCHITECTURE.md)
 - [Status](docs/STATUS.md)
