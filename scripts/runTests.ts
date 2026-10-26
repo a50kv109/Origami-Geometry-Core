@@ -1,8 +1,8 @@
 /**
  * CLI Test Runner for PCRS Core Gate 1 & Gate 1.1 Test Suites
  */
-import { runAllPcrsTests } from '../src/core/testRunner';
-import { runSchemaValidationSuite } from '../src/core/schemaValidationTest';
+import { runAllPcrsTests } from '../src/tests/testRunner';
+import { runSchemaValidationSuite } from '../src/tests/schemaValidationTest';
 
 console.log('================================================================');
 console.log('  PCRS THEORY LAB — RUNTIME & SCHEMA VERIFICATION HARNESS       ');

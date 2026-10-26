@@ -1,61 +1,38 @@
-# PCRS — Paper Construction Reasoning Stand (`pcrs-theory`)
+# Geometry Reasoning Core
 
-> **Теоретическая и экспериментальная основа PCRS (Paper Construction Reasoning Stand)**.  
-> Система для детерминированного исследования геометрических построений, операций отражения, последовательностей преобразований и проверки геометрических инвариантов.
+Standalone TypeScript research package for representing and checking geometric claims.
 
----
+## Scope
 
-## 1. Назначение и границы
-PCRS — это исследовательский инженерный стенд. Мы исследуем **геометрические аспекты** складывания бумаги:
-- Отражения и аффинные преобразования.
-- Сохранение инвариантов (расстояния, площади, ориентации).
-- Верификация последовательностей операций.
+The package includes a 3D geometry core, a 2D reflection subsystem, experimental solution selection, and an independent verifier. A producer's result is a claim, not a verified fact. The independent verifier covers selected 2D reflection invariants only; it does not prove every operation or every possible input.
 
-**Важно:** Система исследует 2D-геометрию жестких тел. Физическая складываемость, толщина материала, непрерывная кинематика и 3D-столкновения находятся **OUT_OF_SCOPE**.
+This is research software, not a formally verified geometry system. Physical paper thickness, continuous folding kinematics, and general collision behavior are out of scope.
 
----
+## Structure
 
-## 2. Архитектура: Принцип Zero-Trust
-Система построена на разделении ответственности:
-1.  **AGENT PROPOSES:** Агент предлагает преобразование.
-2.  **CORE COMPUTES (`src/core/reflection.ts`):** Ядро выполняет вычисления (заморожено).
-3.  **INDEPENDENT VERIFIER (`src/verifier/independentVerifier.ts`):** Автономно проверяет соответствие результата математическим инвариантам (заморожен).
-4.  **EXPERIMENT REFINES:** Результаты фиксируются в экспериментах.
+- `src/core/` — geometry model, operations, topology, metrics, semantics, and agent interfaces.
+- `src/verifier/` — independent checks for supported reflection properties.
+- `src/experimental/` — experimental branch selection and sample 2D/3D domains.
+- `src/tests/` — deterministic and schema-validation tests.
+- `schemas/` — pattern passport JSON Schema.
+- `scripts/runTests.ts` — core test runner.
+- `docs/` — architecture, status, testing instructions, and known limitations.
 
----
+## Requirements and checks
 
-## 3. Структура репозитория
-- `docs/`: Документация (в т.ч. AGENT_GUIDE.md).
-- `schemas/`: JSON Schema для паспортов паттернов.
-- `src/`: Вычислительное ядро и верификатор (ЗАМОРОЖЕНЫ).
-- `EXPERIMENTS/`: Воспроизводимые эксперименты и отчеты.
+Use Node.js 20+ and npm. From this directory, run:
 
----
+```sh
+npm ci
+npm test
+npm run test:exp
+npm run build
+```
 
-## 4. Быстрый старт
-Для проверки проекта (требуется Node.js/tsx):
+During publication preparation, npm registry DNS was unavailable, so dependency installation, tests, and compilation were not executed. This upload is not a claim of passing tests.
 
-1.  **Установка:** `npm install`
-2.  **Валидация паспортов (P-01):** `npm run validate:p01`
-3.  **Запуск всех тестов:** `npm test`
-4.  **Сборка:** `npm run build`
+## Extending a domain
 
----
+Experimental domains implement `GeometricProblem` in `src/experimental/types.ts` and return a `SolutionSet`. Keep candidate generation, selection policy, and independent checking separate. Add tests for both accepted and rejected cases before relying on a new domain's output.
 
-## 5. Как изучать проект (Раздел для Агентов)
-Пожалуйста, начните изучение с **`/docs/AGENT_GUIDE.md`**. В нём описан порядок чтения, навигация и протокол верификации утверждений.
-
----
-
-## 6. Канонические документы
-- **Миссия:** `/PROJECT_CHARTER.md`
-- **Реестр документов:** `/docs/architecture/PCRS_DOCUMENTATION_REGISTER.md`
-- **Статус паттернов:** `/docs/patterns/`
-- **Эксперименты:** `/EXPERIMENTS/ORIGAMI-REFERENCE/EXPERIMENT_INDEX.md`
-
----
-
-## 7. Дорожная карта и ограничения
-- **Реализовано:** 2D-отражения, автоматизированный шлюз паспортов паттернов, независимый верификатор.
-- **Ограничения:** Численные допуски ($\epsilon_{coord} \le 10^{-7}$, $\epsilon_{area} \le 10^{-9}$) эмпирически проверены в тестовых сценариях для области $L = \max(|x|, |y|) \le 2$. Универсальная калибровка для всех входов в этой области или вне её не установлена.
-- **Статус:** Исследовательский стенд. Не является завершенной системой физического моделирования.
+See `docs/ARCHITECTURE.md`, `docs/STATUS.md`, `docs/TESTING.md`, and `docs/KNOWN_LIMITATIONS.md` for more details.

@@ -1,18 +1,8 @@
 node_modules/
-build/
 dist/
 coverage/
+*.tsbuildinfo
 .DS_Store
-*.log
-.env*
+.env
+.env.*
 !.env.example
-
-# Archives & binaries
-*.zip
-*.tar.gz
-skilla.zip
-
-# Large research assets (>20MB PDFs)
-public/assets/aistudio/*.pdf
-public/assets/aistudio/*.zip
-
