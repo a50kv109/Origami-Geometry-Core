@@ -1,36 +1,61 @@
-# Geometry Reasoning Core
+# PCRS — Paper Construction Reasoning Stand (`pcrs-theory`)
 
-A deterministic geometric reasoning engine and cross-domain constraint-resolution framework.
+> **Теоретическая и экспериментальная основа PCRS (Paper Construction Reasoning Stand)**.  
+> Система для детерминированного исследования геометрических построений, операций отражения, последовательностей преобразований и проверки геометрических инвариантов.
 
-## Purpose
-This project provides a robust, self-contained implementation of a geometric reasoning pipeline based on the separation of constraints, solution sets, and independent verification. It is domain-agnostic and supports deterministic branch selection in geometric configurations.
+---
 
-## Features
-- **Geometric Reasoning Pipeline:** Separation of constraints, solver output, disambiguation policies, and independent verification.
-- **Branch Disambiguation:** Generic `BranchSelector` supporting `PARITY`, `MINIMAL_DISPLACEMENT`, and `EXPLICIT_INDEX` policies.
-- **Independent Verification:** Decoupled residual norm evaluation.
+## 1. Назначение и границы
+PCRS — это исследовательский инженерный стенд. Мы исследуем **геометрические аспекты** складывания бумаги:
+- Отражения и аффинные преобразования.
+- Сохранение инвариантов (расстояния, площади, ориентации).
+- Верификация последовательностей операций.
 
-## Installation
-```bash
-npm install
-```
+**Важно:** Система исследует 2D-геометрию жестких тел. Физическая складываемость, толщина материала, непрерывная кинематика и 3D-столкновения находятся **OUT_OF_SCOPE**.
 
-## Running Tests
-- **Core Baseline Tests:** `npm test`
-- **Experimental Tests:** `npm run test:exp`
+---
 
-## Adding a New Geometry Domain
-To extend the reasoning engine to a new domain:
-1.  **Define the Problem:** Create a class implementing the `GeometricProblem<T>` interface.
-2.  **Implement `solve()`:** The solver should return a `SolutionSet<T>` classifying the outcomes.
-3.  **Implement `verify()`:** Create an independent `Verifier<T>` to audit chosen solutions.
-4.  **Selection:** Use the `BranchSelector<T>` with an appropriate policy to pick a solution branch.
+## 2. Архитектура: Принцип Zero-Trust
+Система построена на разделении ответственности:
+1.  **AGENT PROPOSES:** Агент предлагает преобразование.
+2.  **CORE COMPUTES (`src/core/reflection.ts`):** Ядро выполняет вычисления (заморожено).
+3.  **INDEPENDENT VERIFIER (`src/verifier/independentVerifier.ts`):** Автономно проверяет соответствие результата математическим инвариантам (заморожен).
+4.  **EXPERIMENT REFINES:** Результаты фиксируются в экспериментах.
 
-## Documentation
-- [Architecture](docs/ARCHITECTURE.md)
-- [Status](docs/STATUS.md)
-- [Testing](docs/TESTING.md)
-- [Known Limitations](docs/KNOWN_LIMITATIONS.md)
+---
 
-## License
-[MIT License](LICENSE).
+## 3. Структура репозитория
+- `docs/`: Документация (в т.ч. AGENT_GUIDE.md).
+- `schemas/`: JSON Schema для паспортов паттернов.
+- `src/`: Вычислительное ядро и верификатор (ЗАМОРОЖЕНЫ).
+- `EXPERIMENTS/`: Воспроизводимые эксперименты и отчеты.
+
+---
+
+## 4. Быстрый старт
+Для проверки проекта (требуется Node.js/tsx):
+
+1.  **Установка:** `npm install`
+2.  **Валидация паспортов (P-01):** `npm run validate:p01`
+3.  **Запуск всех тестов:** `npm test`
+4.  **Сборка:** `npm run build`
+
+---
+
+## 5. Как изучать проект (Раздел для Агентов)
+Пожалуйста, начните изучение с **`/docs/AGENT_GUIDE.md`**. В нём описан порядок чтения, навигация и протокол верификации утверждений.
+
+---
+
+## 6. Канонические документы
+- **Миссия:** `/PROJECT_CHARTER.md`
+- **Реестр документов:** `/docs/architecture/PCRS_DOCUMENTATION_REGISTER.md`
+- **Статус паттернов:** `/docs/patterns/`
+- **Эксперименты:** `/EXPERIMENTS/ORIGAMI-REFERENCE/EXPERIMENT_INDEX.md`
+
+---
+
+## 7. Дорожная карта и ограничения
+- **Реализовано:** 2D-отражения, автоматизированный шлюз паспортов паттернов, независимый верификатор.
+- **Ограничения:** Численные допуски ($\epsilon_{coord} \le 10^{-7}$, $\epsilon_{area} \le 10^{-9}$) эмпирически проверены в тестовых сценариях для области $L = \max(|x|, |y|) \le 2$. Универсальная калибровка для всех входов в этой области или вне её не установлена.
+- **Статус:** Исследовательский стенд. Не является завершенной системой физического моделирования.
