@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "test": "tsx src/experimental/tests/experiment.test.ts"
+    "test": "tsx scripts/runTests.ts",
+    "test:exp": "tsx src/experimental/tests/experiment.test.ts",
+    "build": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
